@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-agent-deployment
+  labels:
+    app: risk-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risk-agent
+  template:
+    metadata:
+      labels:
+        app: risk-agent
+    spec:
+      containers:
+        - name: risk-agent
+          # Make sure to replace this with your actual container image path
+          image: gcr.io/oracle69-website/risk-agent:latest
+          ports:
+            - name: http # This name is important to match the Service's targetPort
+              containerPort: 8080
+          env:
+            - name: PROJECT_ID
+              value: "oracle69-website" # Your GCP Project ID
+            - name: LOCATION
+              value: "us-central1"
+          resources: {}

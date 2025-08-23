@@ -1,0 +1,4 @@
+./rand.go
+./text.go
+./util.go
+./rand_test.go

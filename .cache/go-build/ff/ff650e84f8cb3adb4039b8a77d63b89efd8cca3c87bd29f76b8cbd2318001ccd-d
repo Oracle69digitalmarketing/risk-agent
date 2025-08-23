@@ -1,0 +1,9 @@
+./builder.go
+./clone.go
+./compare.go
+./iter.go
+./reader.go
+./replace.go
+./search.go
+./strings.go
+./export_test.go

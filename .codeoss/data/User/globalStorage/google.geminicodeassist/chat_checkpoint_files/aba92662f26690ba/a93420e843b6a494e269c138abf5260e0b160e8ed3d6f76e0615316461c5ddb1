@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-agent-deployment
+  labels:
+    app: risk-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risk-agent
+  template:
+    metadata:
+      labels:
+        app: risk-agent
+    spec:
+      containers:
+        - name: risk-agent-container
+          image: gcr.io/your-project-id/risk-agent:latest # IMPORTANT: Replace with your actual container image
+          command: ["/app/risk-agent"] # Example: Path to your compiled binary inside the container
+          # args: ["--listen", ":8080"] # Example: Optional arguments for your application
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: PROJECT_ID
+              value: "oracle69-website" # Or your actual GCP Project ID

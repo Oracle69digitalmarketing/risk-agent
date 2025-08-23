@@ -1,0 +1,11 @@
+./abi_test.go
+./all_test.go
+./benchmark_test.go
+./example_test.go
+./iter_test.go
+./map_swiss_test.go
+./nih_test.go
+./set_test.go
+./tostring_test.go
+./type_test.go
+./visiblefields_test.go

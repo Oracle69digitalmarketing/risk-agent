@@ -1,0 +1,11 @@
+2025-08-22 22:25:52.671 [info] Try to start language server - activation (enabled: true)
+2025-08-22 22:25:53.144 [info] Running language server gopls(v0.20.0/go1.25.0)
+2025-08-22 22:25:54.403 [info] Running checks...
+2025-08-22 22:25:54.403 [info] Starting linting the current package at /home/sophiemabel69
+2025-08-22 22:27:03.589 [info] /home/sophiemabel69>Finished running tool: /google/gopath/bin/staticcheck
+2025-08-22 22:27:03.589 [info] 
+2025-08-22 22:28:48.270 [info] Running checks...
+2025-08-22 22:28:48.342 [info] Starting linting the current package at /home/sophiemabel69
+2025-08-22 22:28:48.605 [info] /home/sophiemabel69>Finished running tool: /google/gopath/bin/staticcheck
+2025-08-22 22:28:48.605 [info] /home/sophiemabel69/main.go:1:1 expected 'package', found 'EOF' (compile)
+2025-08-22 22:28:48.605 [info] 

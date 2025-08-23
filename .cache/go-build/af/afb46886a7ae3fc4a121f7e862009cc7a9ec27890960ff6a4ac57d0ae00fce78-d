@@ -1,0 +1,6 @@
+./commentmap_test.go
+./example_test.go
+./filter_test.go
+./import_test.go
+./issues_test.go
+./walk_test.go

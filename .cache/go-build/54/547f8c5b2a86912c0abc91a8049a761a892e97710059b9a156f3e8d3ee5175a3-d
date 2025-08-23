@@ -1,0 +1,2 @@
+./sha512.go
+./sha512_test.go

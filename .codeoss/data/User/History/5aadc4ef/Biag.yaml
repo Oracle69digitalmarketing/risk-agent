@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-agent
+  labels:
+    app: risk-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risk-agent
+  template:
+    metadata:
+      labels:
+        app: risk-agent
+    spec:
+      containers:
+        - name: risk-agent
+          image: gcr.io/oracle69-website/risk-agent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PROJECT_ID
+              value: "oracle69-website"
+            - name: LOCATION
+              value: "us-central1"

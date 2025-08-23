@@ -1,0 +1,8 @@
+              containerPort: 8080
+              name: http
+          env:
+            - name: PROJECT_ID
+              value: "oracle69-website" # Or your actual GCP Project ID
+            - name: LOCATION
+              value: "us-central1"
+          resources:

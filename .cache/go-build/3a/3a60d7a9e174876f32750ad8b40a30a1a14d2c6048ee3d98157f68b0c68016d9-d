@@ -1,0 +1,3 @@
+./crypto_test.go
+./issue21104_test.go
+./purego_test.go

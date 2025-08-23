@@ -1,0 +1,9 @@
+./build.go
+./doc.go
+./gc.go
+./read.go
+./build_test.go
+./deps_test.go
+./read_test.go
+./syslist_test.go
+./vendor_test.go

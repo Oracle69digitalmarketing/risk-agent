@@ -1,0 +1,5 @@
+./constant_time.go
+./dit.go
+./xor.go
+./constant_time_test.go
+./dit_test.go

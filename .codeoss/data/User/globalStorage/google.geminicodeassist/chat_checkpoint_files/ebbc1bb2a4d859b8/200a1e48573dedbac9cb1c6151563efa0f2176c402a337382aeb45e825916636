@@ -1,0 +1,35 @@
+# --- Build Stage ---
+# Use an official Golang image to build the application.
+# 'AS builder' names this stage so we can reference it later.
+FROM golang:1.19-alpine AS builder
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+# Copy go module and sum files
+COPY go.mod go.sum ./
+
+# Download all dependencies. Dependencies will be cached if the
+# go.mod and go.sum files are not changed.
+RUN go mod download
+
+# Copy the source code into the container
+COPY . .
+
+# Build the Go app, creating a statically-linked binary.
+RUN CGO_ENABLED=0 GOOS=linux go build -o /app/risk-agent .
+
+# --- Final Stage ---
+# Use a minimal, non-root base image for the final container for security.
+FROM gcr.io/distroless/static-debian11
+
+# Copy the built binary from the 'builder' stage.
+COPY --from=builder /app/risk-agent /risk-agent
+
+# Tell the container to listen on port 8080.
+EXPOSE 8080
+
+# Command to run the executable when the container starts.
+ENTRYPOINT ["/risk-agent"]
+
+

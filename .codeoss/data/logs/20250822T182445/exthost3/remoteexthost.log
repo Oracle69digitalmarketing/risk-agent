@@ -1,0 +1,3 @@
+2025-08-22 19:45:14.193 [info] Extension host with pid 2023 started
+2025-08-22 20:11:48.459 [info] Extension host terminating: received terminate message from renderer
+2025-08-22 20:11:48.462 [info] Extension host with pid 2023 exiting with code 0

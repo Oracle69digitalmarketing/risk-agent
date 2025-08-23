@@ -1,0 +1,28 @@
+# Stage 1: The "builder" stage, where we compile the Go application.
+# We use a specific Go version on a lightweight Alpine Linux base.
+FROM golang:1.25-alpine AS builder
+
+# Set the working directory inside the container.
+WORKDIR /app
+
+# Copy the Go module files and download dependencies.
+# This step is cached by Docker if the files don't change, speeding up future builds.
+COPY go.mod ./
+RUN go mod download
+
+# Copy the rest of your application's source code.
+COPY . .
+
+# Compile the Go application into a static binary named "risk-agent".
+# CGO_ENABLED=0 ensures it's a static build, independent of system libraries.
+# -ldflags="-w -s" makes the binary smaller by stripping debug info.
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /risk-agent .
+
+# Stage 2: The "final" stage, where we create the minimal production image.
+FROM alpine:latest
+
+# Copy only the compiled binary from the "builder" stage.
+COPY --from=builder /risk-agent /risk-agent
+
+# Set the command to run when the container starts. This is the entry point.
+ENTRYPOINT ["/risk-agent"]

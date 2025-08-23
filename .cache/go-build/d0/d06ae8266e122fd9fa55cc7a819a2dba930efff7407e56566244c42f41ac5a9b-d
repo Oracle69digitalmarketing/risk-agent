@@ -1,0 +1,9 @@
+./position.go
+./serialize.go
+./token.go
+./tree.go
+./export_test.go
+./position_test.go
+./serialize_test.go
+./token_test.go
+./tree_test.go

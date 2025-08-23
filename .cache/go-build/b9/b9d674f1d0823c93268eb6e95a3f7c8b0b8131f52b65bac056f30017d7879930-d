@@ -1,0 +1,8 @@
+./allocs_test.go
+./benchmark_test.go
+./example_loop_test.go
+./flag_test.go
+./helper_test.go
+./helperfuncs_test.go
+./panic_test.go
+./testing_test.go

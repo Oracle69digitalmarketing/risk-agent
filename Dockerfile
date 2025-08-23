@@ -1,0 +1,10 @@
+# --- Build Stage ---
+# Use an official Golang image to build the application.
+# 'AS builder' names this stage so we can reference it later.
+FROM golang:1.19-alpine AS builder
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+
+
