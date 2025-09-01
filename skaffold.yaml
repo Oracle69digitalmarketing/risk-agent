@@ -1,28 +1,48 @@
-apiVersion: skaffold/v4beta10
+apiVersion: skaffold/v2beta29
 kind: Config
 metadata:
   name: bank-of-anthos
-
 build:
   artifacts:
-    - image: us-central1-docker.pkg.dev/oracle169-website/risk-agent
-      context: src/risk-agent
-    - image: us-central1-docker.pkg.dev/oracle169-website/frontend/frontend
+    - image: us-central1-docker.pkg.dev/oracle69-website/bank-of-anthos-repo/cloudshell-dev
       context: src/frontend
-  tagPolicy:
-    gitCommit: {}
-
+    - image: us-central1-docker.pkg.dev/oracle69-website/bank-of-anthos-repo/cloudshell-staging
+      context: src/risk-agent
+  local:
+    push: true
 deploy:
   kubectl:
     manifests:
-      - k8s/*.yaml
-
-portForward:
-  - resourceType: service
-    resourceName: risk-agent
-    port: 8080
-    localPort: 8080
-  - resourceType: service
-    resourceName: frontend
-    port: 80
-    localPort: 8081
+      # Staging environment
+      - k8s/staging/frontend-deployment.yaml
+      - k8s/staging/frontend-service.yaml
+      - k8s/staging/risk-agent-deployment.yaml
+      - k8s/staging/risk-agent-service.yaml
+      # Production environment
+      - k8s/prod/frontend-deployment.yaml
+      - k8s/prod/frontend-service.yaml
+      - k8s/prod/risk-agent-deployment.yaml
+      - k8s/prod/risk-agent-service.yaml
+profiles:
+  - name: staging
+    build:
+      local:
+        push: true
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/staging/frontend-deployment.yaml
+          - k8s/staging/frontend-service.yaml
+          - k8s/staging/risk-agent-deployment.yaml
+          - k8s/staging/risk-agent-service.yaml
+  - name: prod
+    build:
+      local:
+        push: true
+    deploy:
+      kubectl:
+        manifests:
+          - k8s/prod/frontend-deployment.yaml
+          - k8s/prod/frontend-service.yaml
+          - k8s/prod/risk-agent-deployment.yaml
+          - k8s/prod/risk-agent-service.yaml

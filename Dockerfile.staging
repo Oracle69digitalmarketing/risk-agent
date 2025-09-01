@@ -1,0 +1,7 @@
+# Example staging Dockerfile
+FROM gcr.io/cloudshell-images/cloudshell-dev:latest
+WORKDIR /app
+COPY src/frontend/ .
+COPY src/risk-agent/ .
+EXPOSE 8080 8081
+CMD ["sh", "-c", "echo Frontend & Risk-Agent started"]

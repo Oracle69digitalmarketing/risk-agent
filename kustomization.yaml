@@ -1,6 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
+namespace: bank-anthos
+commonLabels:
+  app.kubernetes.io/part-of: bank-of-anthos
+
 resources:
   - src/risk-agent/deployment.yaml
   - src/risk-agent/service.yaml

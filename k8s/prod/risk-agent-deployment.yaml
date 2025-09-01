@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: risk-agent
-  labels:
-    app: risk-agent
 spec:
   replicas: 2
   selector:
@@ -16,6 +14,6 @@ spec:
     spec:
       containers:
       - name: risk-agent
-        image: gcr.io/YOUR_GCP_PROJECT/risk-agent:latest
+        image: us-central1-docker.pkg.dev/oracle69-website/bank-of-anthos-repo/cloudshell-staging:v0.6.7
         ports:
-        - containerPort: 8080
+        - containerPort: 8081

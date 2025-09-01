@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-    app: frontend
 spec:
   replicas: 2
   selector:
@@ -15,7 +13,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: gcr.io/YOUR_GCP_PROJECT/frontend:latest
-        ports:
-        - containerPort: 80
+        - name: frontend
+          image: gcr.io/google-samples/microservices-demo/frontend:v0.3.9
+          ports:
+            - containerPort: 8080

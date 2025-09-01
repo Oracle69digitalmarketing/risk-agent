@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: risk-agent
+  name: frontend
 spec:
+  type: LoadBalancer
   selector:
-    app: risk-agent
-  type: ClusterIP
+    app: frontend
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 8080

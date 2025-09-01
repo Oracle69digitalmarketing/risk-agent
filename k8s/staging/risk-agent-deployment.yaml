@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: risk-agent
-  labels:
-    app: risk-agent
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: risk-agent
@@ -15,7 +13,7 @@ spec:
         app: risk-agent
     spec:
       containers:
-      - name: risk-agent
-        image: gcr.io/YOUR_GCP_PROJECT/risk-agent:latest
-        ports:
-        - containerPort: 8080
+        - name: risk-agent
+          image: gcr.io/cloudshell-images/cloudshell-dev
+          ports:
+            - containerPort: 8081

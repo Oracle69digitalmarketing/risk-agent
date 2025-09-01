@@ -1,6 +1,6 @@
-FROM python:3.12-slim
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y curl git
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
 COPY . .
-CMD ["python", "main.py"]
+EXPOSE 8081
+CMD ["tail", "-f", "/dev/null"]
