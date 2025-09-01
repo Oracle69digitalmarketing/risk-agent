@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - src/risk-agent/deployment.yaml
+  - src/risk-agent/service.yaml
+  - src/frontend/deployment.yaml
+  - src/frontend/service.yaml

@@ -1,38 +1,28 @@
-# Copyright 2022 Google LLC
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-apiVersion: skaffold/v4beta1
+apiVersion: skaffold/v4beta10
 kind: Config
 metadata:
   name: bank-of-anthos
-requires:
-- configs:
-  - accounts
-  path: src/accounts/skaffold.yaml
-- configs:
-  - ledger
-  path: src/ledger/skaffold.yaml
-- configs:
-  - frontend
-  path: src/frontend/skaffold.yaml
-- configs:
-  - loadgenerator
-  path: src/loadgenerator/skaffold.yaml
-- configs:
-  - accounts-db
-  path: src/accounts/accounts-db/skaffold.yaml
-- configs:
-  - ledger-db
-  path: src/ledger/ledger-db/skaffold.yaml
+
+build:
+  artifacts:
+    - image: us-central1-docker.pkg.dev/oracle169-website/risk-agent
+      context: src/risk-agent
+    - image: us-central1-docker.pkg.dev/oracle169-website/frontend/frontend
+      context: src/frontend
+  tagPolicy:
+    gitCommit: {}
+
 deploy:
-  tolerateFailuresUntilDeadline: true
+  kubectl:
+    manifests:
+      - k8s/*.yaml
+
+portForward:
+  - resourceType: service
+    resourceName: risk-agent
+    port: 8080
+    localPort: 8080
+  - resourceType: service
+    resourceName: frontend
+    port: 80
+    localPort: 8081

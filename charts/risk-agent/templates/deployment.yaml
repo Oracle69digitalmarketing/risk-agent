@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risk-agent
+  template:
+    metadata:
+      labels:
+        app: risk-agent
+    spec:
+      containers:
+        - name: risk-agent
+          image: us-central1-docker.pkg.dev/oracle69-website/risk-agent/risk-agent:latest
+          ports:
+            - containerPort: 8080

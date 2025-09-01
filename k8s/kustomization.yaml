@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../src/risk-agent/deployment.yaml
+  - ../src/risk-agent/service.yaml
+  - ../src/frontend/deployment.yaml
+  - ../src/frontend/service.yaml
+
+images:
+  - name: us-central1-docker.pkg.dev/oracle69-website/risk-agent/risk-agent
+    newName: us-central1-docker.pkg.dev/oracle69-website/risk-agent/risk-agent
+    newTag: latest
+  - name: us-central1-docker.pkg.dev/oracle69-website/frontend/frontend
+    newName: us-central1-docker.pkg.dev/oracle69-website/frontend/frontend
+    newTag: latest

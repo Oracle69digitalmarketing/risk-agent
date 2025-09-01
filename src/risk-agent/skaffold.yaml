@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta29
+kind: Config
+metadata:
+  name: risk-agent
+build:
+  artifacts:
+    - image: risk-agent
+      context: .
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - kubernetes-manifests/*.yaml
