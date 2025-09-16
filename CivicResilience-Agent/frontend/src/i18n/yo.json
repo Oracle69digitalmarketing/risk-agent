@@ -1,0 +1,14 @@
+{
+  "dashboard_title": "Ibojú Olùrànlọ́wọ́",
+  "loading": "Ìkó àwọn ìṣẹlẹ...",
+  "resolved": "✅ Ti dájú",
+  "unresolved": "⏳ Kò tíì dájú",
+  "route": "Firanṣẹ ìkìlọ̀",
+  "resolve": "Samisi gẹ́gẹ́ bíi ti dájú",
+  "analytics_title": "Ìtúpalẹ̀ Àwọn Ìṣẹlẹ",
+  "category_chart": "Ìṣẹlẹ nípa Ẹ̀ka",
+  "severity_chart": "Ìtànkálẹ̀ Ibiṣoro",
+  "routing_chart": "Ìpò Fífiranṣẹ",
+  "response_chart": "Àkókò Ìfèsẹ̀yàn",
+  "language_toggle": "Èdè"
+}

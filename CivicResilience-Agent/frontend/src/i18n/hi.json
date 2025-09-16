@@ -1,0 +1,14 @@
+{
+  "dashboard_title": "प्रतिक्रिया डैशबोर्ड",
+  "loading": "घटनाएँ लोड हो रही हैं...",
+  "resolved": "✅ हल किया गया",
+  "unresolved": "⏳ अनसुलझा",
+  "route": "अलर्ट भेजें",
+  "resolve": "हल के रूप में चिह्नित करें",
+  "analytics_title": "घटना विश्लेषण",
+  "category_chart": "श्रेणी के अनुसार घटना आवृत्ति",
+  "severity_chart": "गंभीरता वितरण",
+  "routing_chart": "रूटिंग स्थिति",
+  "response_chart": "प्रतिक्रिया समय प्रवृत्तियाँ",
+  "language_toggle": "भाषा"
+}

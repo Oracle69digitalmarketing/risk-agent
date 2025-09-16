@@ -1,0 +1,14 @@
+{
+  "dashboard_title": "响应者仪表板",
+  "loading": "正在加载事件...",
+  "resolved": "✅ 已解决",
+  "unresolved": "⏳ 未解决",
+  "route": "发送警报",
+  "resolve": "标记为已解决",
+  "analytics_title": "事件分析",
+  "category_chart": "按类别划分的事件频率",
+  "severity_chart": "严重程度分布",
+  "routing_chart": "路由状态",
+  "response_chart": "响应时间趋势",
+  "language_toggle": "语言"
+}

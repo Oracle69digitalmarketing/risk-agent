@@ -1,0 +1,28 @@
+{
+  "name": "oracle69-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Oracle69 Civic Resilience Platform",
+  "author": "Prince Mabel",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.17.0",
+    "firebase": "^10.7.0",
+    "i18next": "^23.5.0",
+    "react-i18next": "^13.0.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^4.2.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  }
+}
