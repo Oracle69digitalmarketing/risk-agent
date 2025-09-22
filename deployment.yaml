@@ -1,4 +1,49 @@
-              containerPort: 8080
-          env:
-            - name: PROJECT_ID
-              value: "oracle69-website"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: risk-agent
+  labels:
+    app: risk-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: risk-agent
+  template:
+    metadata:
+      labels:
+        app: risk-agent
+    spec:
+      containers:
+      - name: risk-agent
+        image: gcr.io/oracle69-website/risk-agent:latest
+        command: ["python3", "src/server.py"]
+        env:
+        - name: PYTHONPATH
+          value: /app/src
+        ports:
+        - containerPort: 50051
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
+      tolerations:
+      - key: "cloud.google.com/gke-quick-remove"
+        operator: "Exists"
+        effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: risk-agent
+spec:
+  type: LoadBalancer
+  selector:
+    app: risk-agent
+  ports:
+  - port: 50051
+    targetPort: 50051
+    protocol: TCP
